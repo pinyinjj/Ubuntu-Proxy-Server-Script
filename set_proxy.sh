@@ -29,6 +29,12 @@ echo "proxy = \"http://$NEW_PROXY_IP:$PROXY_PORT\"" >> $POETRY_CONFIG
 echo "[https]" >> $POETRY_CONFIG
 echo "proxy = \"http://$NEW_PROXY_IP:$PROXY_PORT\"" >> $POETRY_CONFIG
 
+# 更新 conda 的代理配置
+CONDA_CONFIG="$HOME/.condarc"
+echo "proxy_servers:" > $CONDA_CONFIG
+echo "  http: http://$NEW_PROXY_IP:$PROXY_PORT" >> $CONDA_CONFIG
+echo "  https: http://$NEW_PROXY_IP:$PROXY_PORT" >> $CONDA_CONFIG
+
 # 确认代理设置
 echo "HTTP Proxy: $http_proxy"
 echo "HTTPS Proxy: $https_proxy"
